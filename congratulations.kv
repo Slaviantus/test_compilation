@@ -1,0 +1,101 @@
+#:include modules_list.kv
+
+<CongratulationsWindow@Screen>:
+
+    name:"congratulations"
+
+
+    canvas.before:
+        Rectangle:
+            id: rect_a
+            pos: self.pos
+            size: 1920, 1080
+            source: 'background.png'
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: 10
+
+        canvas.before:
+            Color:
+                rgba: 0.549, 0.941, 0.627, 1
+            Line:
+                width: 1.1
+                rectangle: self.x + 10, self.y + 10, self.width - 20, self.height - 20
+
+
+        BoxLayout:
+            orientation: "vertical"
+            height: root.height - 100
+            size_hint: 1, None
+
+
+        Label:
+            text: "CONGRATULATIONS!"
+            color: 0.549, 0.941, 0.627, 1
+            font_name: 'AverageMono.otf'
+            halign: 'center'
+            valign: 'center'
+            text_size: self.size
+            font_size: 28
+            size_hint_y: 1, None
+            height: 100
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1.1
+                    rectangle: self.x + 4, self.y + 4, self.width - 8, self.height - 8
+
+
+        Label:
+            text: "You have leart all words in module!"
+            color: 0.549, 0.941, 0.627, 1
+            font_name: 'AverageMono.otf'
+            halign: 'center'
+            valign: 'center'
+            text_size: self.size
+            font_size: 20
+            size_hint_y: 1, None
+            height: 60
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1.1
+                    rectangle: self.x + 4, self.y + 4, self.width - 8, self.height - 8
+
+
+        BoxLayout:
+            orientation: "vertical"
+            height: root.height - 330
+            size_hint: 1, None
+
+
+        Button:
+            text: "BACK"
+            font_name: 'AverageMono.otf'
+            color: 0.549, 0.941, 0.627, 1
+            font_size: 28
+            height: 50
+            size_hint: 1, None
+            background_down: ''
+            background_color: 0, 0, 0, 0
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1.5
+                    rectangle: self.x, self.y, self.width, self.height
+
+            on_press:
+                self.background_color = 0.549, 0.941, 0.627, 1
+                self.color = 0, 0, 0, 1
+
+            on_release:
+                self.background_color = 0, 0, 0, 0
+                self.color = 0.549, 0.941, 0.627, 1
+                app.root.current = "modules_list"

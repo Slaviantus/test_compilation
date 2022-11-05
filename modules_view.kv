@@ -1,0 +1,108 @@
+#:include add_module.kv
+#:include edit_module.kv
+
+
+<ModulesViewWindow@Screen>:
+    name:"modules_view"
+
+    modules_list: list_a
+
+    on_enter: root.on_open_window()
+    on_leave: root.on_close_window()
+
+    canvas.before:
+        Rectangle:
+            id: rect_a
+            pos: self.pos
+            size: 1920, 1080
+            source: 'background.png'
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: 10
+
+        canvas.before:
+            Color:
+                rgba: 0.549, 0.941, 0.627, 1
+            Line:
+                width: 1.1
+                rectangle: self.x + 10, self.y + 10, self.width - 20, self.height - 20
+
+        Label:
+            text: "MODULES VIEW"
+            font_name: 'AverageMono.otf'
+            color: 0.549, 0.941, 0.627, 1
+            font_size: 28
+            valign: "center"
+            height: 40
+            size_hint: 1, None
+
+        BoxLayout:
+            orientation: "vertical"
+            padding: 10
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1.1
+                    rectangle: self.x + 10, self.y + 10, self.width - 20, self.height - 20
+
+            ScrollView:
+                MDList:
+                    id: list_a
+
+        Button:
+            text: "ADD MODULE"
+            font_name: 'AverageMono.otf'
+            color: 0.549, 0.941, 0.627, 1
+            font_size: 28
+            height: 50
+            size_hint: 1, None
+            background_down: ''
+            background_color: 0, 0, 0, 0
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1.5
+                    rectangle: self.x, self.y, self.width, self.height
+
+            on_press:
+                self.background_color = 0.549, 0.941, 0.627, 1
+                self.color = 0, 0, 0, 1
+
+            on_release:
+                self.background_color = 0, 0, 0, 0
+                self.color = 0.549, 0.941, 0.627, 1
+                app.root.current = "add_module"
+
+
+        Button:
+            text: "BACK"
+            font_name: 'AverageMono.otf'
+            color: 0.549, 0.941, 0.627, 1
+            font_size: 28
+            height: 50
+            size_hint: 1, None
+            background_down: ''
+            background_color: 0, 0, 0, 0
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1.5
+                    rectangle: self.x, self.y, self.width, self.height
+
+            on_press:
+                self.background_color = 0.549, 0.941, 0.627, 1
+                self.color = 0, 0, 0, 1
+
+            on_release:
+                self.background_color = 0, 0, 0, 0
+                self.color = 0.549, 0.941, 0.627, 1
+                app.root.current = "start"
+
+

@@ -1,0 +1,182 @@
+
+
+<EditWordWindow@Screen>:
+
+    name: "edit_word"
+
+    edit_cyrilic: text_input_a
+    edit_latin: text_input_b
+    edit_translation: text_input_c
+
+    on_enter: root.on_open_window()
+
+    canvas.before:
+        Rectangle:
+            id: rect_a
+            pos: self.pos
+            size: 1920, 1080
+            source: 'background.png'
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: 10
+
+        canvas.before:
+            Color:
+                rgba: 0.549, 0.941, 0.627, 1
+            Line:
+                width: 1.1
+                rectangle: self.x + 10, self.y + 10, self.width - 20, self.height - 20
+
+        Label:
+            text: "ENTER NEW WORD IN CYRILIC"
+            color: 0, 0, 0, 1
+            font_name: 'AverageMono.otf'
+            color: 0.549, 0.941, 0.627, 1
+            font_size: 20
+            height: 30
+            size_hint: 1, None
+            halign: 'center'
+            valign: 'center'
+            text_size: self.size
+            background_down: ''
+            background_color: 0, 0, 0, 0
+
+        TextInput:
+            id: text_input_a
+            font_name: 'AverageMono.otf'
+            foreground_color: 0.549, 0.941, 0.627, 1
+            background_color: 0, 0, 0, 0
+            font_size: 20
+            size_hint: 1, None
+            height: 100
+            multiline: True
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1.1
+                    rectangle: self.x + 4, self.y + 4, self.width - 8, self.height - 8
+
+        Label:
+            text: "ENTER NEW WORD IN LATIN"
+            color: 0, 0, 0, 1
+            font_name: 'AverageMono.otf'
+            color: 0.549, 0.941, 0.627, 1
+            font_size: 20
+            height: 30
+            size_hint: 1, None
+            halign: 'center'
+            valign: 'center'
+            text_size: self.size
+            background_down: ''
+            background_color: 0, 0, 0, 0
+
+        TextInput:
+            id: text_input_b
+            font_name: 'AverageMono.otf'
+            foreground_color: 0.549, 0.941, 0.627, 1
+            background_color: 0, 0, 0, 0
+            font_size: 20
+            size_hint: 1, None
+            height: 100
+            multiline: True
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1.1
+                    rectangle: self.x + 4, self.y + 4, self.width - 8, self.height - 8
+
+        Label:
+            text: "ENTER NEW TRANSLATION"
+            color: 0, 0, 0, 1
+            font_name: 'AverageMono.otf'
+            color: 0.549, 0.941, 0.627, 1
+            font_size: 20
+            height: 30
+            size_hint: 1, None
+            halign: 'center'
+            valign: 'center'
+            text_size: self.size
+            background_down: ''
+            background_color: 0, 0, 0, 0
+
+        TextInput:
+            id: text_input_c
+            font_name: 'AverageMono.otf'
+            foreground_color: 0.549, 0.941, 0.627, 1
+            background_color: 0, 0, 0, 0
+            font_size: 20
+            size_hint: 1, None
+            height: 100
+            multiline: True
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1.1
+                    rectangle: self.x + 4, self.y + 4, self.width - 8, self.height - 8
+
+        BoxLayout:
+            orientation: "vertical"
+            height: root.height - 510
+            size_hint: 1, None
+
+        Button:
+            text: "DELETE WORD"
+            font_name: 'AverageMono.otf'
+            color: 0.549, 0.941, 0.627, 1
+            font_size: 28
+            height: 50
+            size_hint: 1, None
+            background_down: ''
+            background_color: 0, 0, 0, 0
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1.5
+                    rectangle: self.x, self.y, self.width, self.height
+
+            on_press:
+                self.background_color = 0.549, 0.941, 0.627, 1
+                self.color = 0, 0, 0, 1
+
+            on_release:
+                self.background_color = 0, 0, 0, 0
+                self.color = 0.549, 0.941, 0.627, 1
+                root.on_delete_button_clicked()
+                app.root.current = "edit_module"
+
+
+        Button:
+            text: "BACK"
+            font_name: 'AverageMono.otf'
+            color: 0.549, 0.941, 0.627, 1
+            font_size: 28
+            height: 50
+            size_hint: 1, None
+            background_down: ''
+            background_color: 0, 0, 0, 0
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1.5
+                    rectangle: self.x, self.y, self.width, self.height
+
+            on_press:
+                self.background_color = 0.549, 0.941, 0.627, 1
+                self.color = 0, 0, 0, 1
+
+            on_release:
+                self.background_color = 0, 0, 0, 0
+                self.color = 0.549, 0.941, 0.627, 1
+                root.on_close_window()
+                app.root.current = "edit_module"

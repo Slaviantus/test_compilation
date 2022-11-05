@@ -1,0 +1,338 @@
+#:include modules_list.kv
+
+<ChooseWordWindow@Screen>:
+    name:"choose_word"
+
+    translation_label: label_d
+    sum_unknown: label_a
+    sum_known: label_b
+    sum_learned: label_c
+    variant_1: button_a
+    variant_2: button_b
+    variant_3: button_c
+    variant_4: button_d
+    next_button: button_e
+    scale: box_layout_a
+    progress_bar: box_layout_b
+
+    on_enter: root.on_open_window()
+
+    canvas.before:
+        Rectangle:
+            id: rect_a
+            pos: self.pos
+            size: 1920, 1080
+            source: 'background.png'
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: 10
+
+        canvas.before:
+            Color:
+                rgba: 0.549, 0.941, 0.627, 1
+            Line:
+                width: 1.1
+                rectangle: self.x + 10, self.y + 10, self.width - 20, self.height - 20
+
+        BoxLayout:
+            orientation: "horizontal"
+            height: 30
+            size_hint: 1, None
+            padding: 4
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1
+                    rectangle: self.x + 4, self.y + 4, self.width - 8, self.height - 8
+
+
+            Label:
+                id: label_a
+                text: ""
+                color: 0.549, 0.941, 0.627, 1
+                font_size: 20
+                font_name: 'AverageMono.otf'
+                height: 30
+
+            Label:
+                text: "/"
+                color: 0.549, 0.941, 0.627, 1
+                font_size: 20
+                font_name: 'AverageMono.otf'
+                height: 30
+
+
+            Label:
+                id: label_b
+                text: ""
+                color: 0.549, 0.941, 0.627, 1
+                font_size: 20
+                font_name: 'AverageMono.otf'
+                height: 30
+
+
+            Label:
+                text: "/"
+                color: 0.549, 0.941, 0.627, 1
+                font_size: 20
+                font_name: 'AverageMono.otf'
+                height: 30
+
+
+            Label:
+                id: label_c
+                text: ""
+                color: 0.549, 0.941, 0.627, 1
+                font_size: 20
+                font_name: 'AverageMono.otf'
+                height: 30
+
+        BoxLayout:
+            id: box_layout_a
+            orientation: "horizontal"
+            height: 30
+            size_hint: 1, None
+            padding: 4
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1
+                    rectangle: self.x, self.y, self.width, self.height
+
+            BoxLayout:
+                id: box_layout_b
+                orientation: "vertical"
+                height: 22
+                size_hint: None, None
+
+                canvas.before:
+                    Color:
+                        rgba: 0.549, 0.941, 0.627, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: 1, None
+            height: 100
+            padding: 4
+
+            Label:
+                id: label_d
+                text: ""
+                font_name: 'AverageMono.otf'
+                color: 0.549, 0.941, 0.627, 1
+                font_size: 20
+                height: 92
+                size_hint: 1, None
+                halign: 'left'
+                valign: 'top'
+                text_size: self.size
+                background_down: ''
+                background_color: 0, 0, 0, 0
+
+        Button:
+            id: button_a
+            text: ""
+            font_name: 'AverageMono.otf'
+            color: 0.549, 0.941, 0.627, 1
+            disabled_color: 0.549, 0.941, 0.627, 1
+            font_size: 20
+            height: 60
+            size_hint: 1, None
+            background_normal: ''
+            background_down: ''
+            background_disabled_normal: ''
+            background_color: 0, 0, 0, 0
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1.5
+                    rectangle: self.x, self.y, self.width, self.height
+
+            on_press:
+                self.background_color = 0.549, 0.941, 0.627, 1
+                self.color = 0, 0, 0, 1
+
+            on_release:
+                self.background_color = 0, 0, 0, 0
+                self.color = 0.549, 0.941, 0.627, 1
+                root.on_variant_word_clicked(self, self.text)
+
+
+        Button:
+            id: button_b
+            text: ""
+            font_name: 'AverageMono.otf'
+            color: 0.549, 0.941, 0.627, 1
+            disabled_color: 0.549, 0.941, 0.627, 1
+            font_size: 20
+            height: 60
+            size_hint: 1, None
+            background_normal: ''
+            background_down: ''
+            background_disabled_normal: ''
+            background_color: 0, 0, 0, 0
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1.5
+                    rectangle: self.x, self.y, self.width, self.height
+
+            on_press:
+                self.background_color = 0.549, 0.941, 0.627, 1
+                self.color = 0, 0, 0, 1
+
+            on_release:
+                self.background_color = 0, 0, 0, 0
+                self.color = 0.549, 0.941, 0.627, 1
+                root.on_variant_word_clicked(self, self.text)
+
+
+        Button:
+            id: button_c
+            text: ""
+            font_name: 'AverageMono.otf'
+            color: 0.549, 0.941, 0.627, 1
+            disabled_color: 0.549, 0.941, 0.627, 1
+            font_size: 20
+            height: 60
+            size_hint: 1, None
+            background_normal: ''
+            background_down: ''
+            background_disabled_normal: ''
+            background_color: 0, 0, 0, 0
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1.5
+                    rectangle: self.x, self.y, self.width, self.height
+
+            on_press:
+                self.background_color = 0.549, 0.941, 0.627, 1
+                self.color = 0, 0, 0, 1
+
+            on_release:
+                self.background_color = 0, 0, 0, 0
+                self.color = 0.549, 0.941, 0.627, 1
+                root.on_variant_word_clicked(self, self.text)
+
+        Button:
+            id: button_d
+            text: ""
+            font_name: 'AverageMono.otf'
+            color: 0.549, 0.941, 0.627, 1
+            disabled_color: 0.549, 0.941, 0.627, 1
+            font_size: 20
+            height: 60
+            size_hint: 1, None
+            background_color: 0, 0, 0, 0
+            background_down: ''
+            background_disabled_normal: ''
+            background_normal: ''
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1.5
+                    rectangle: self.x, self.y, self.width, self.height
+
+            on_press:
+                self.background_color = 0.549, 0.941, 0.627, 1
+                self.color = 0, 0, 0, 1
+
+            on_release:
+                self.color = 0.549, 0.941, 0.627, 1
+                self.background_color = 0, 0, 0, 0
+                root.on_variant_word_clicked(self, self.text)
+
+
+        BoxLayout:
+            orientation: "vertical"
+            height: root.height - 520
+            size_hint: 1, None
+
+
+        Button:
+            id: button_e
+            text: "NEXT"
+            font_name: 'AverageMono.otf'
+            color: 0.549, 0.941, 0.627, 1
+            disabled_color: 0, 0, 0, 0
+            font_size: 28
+            height: 50
+            size_hint: 1, None
+            background_down: ''
+            background_color: 0, 0, 0, 0
+            disabled: True
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1.5
+                    rectangle: self.x, self.y, self.width, self.height
+
+            on_press:
+                self.background_color = 0.549, 0.941, 0.627, 1
+                self.color = 0, 0, 0, 1
+
+            on_release:
+                self.background_color = 0, 0, 0, 0
+                self.color = 0.549, 0.941, 0.627, 1
+                root.go_to_next_page()
+
+
+        Button:
+            text: "BACK"
+            font_name: 'AverageMono.otf'
+            color: 0.549, 0.941, 0.627, 1
+            font_size: 28
+            height: 50
+            size_hint: 1, None
+            background_down: ''
+            background_color: 0, 0, 0, 0
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1.5
+                    rectangle: self.x, self.y, self.width, self.height
+
+            on_press:
+                self.background_color = 0.549, 0.941, 0.627, 1
+                self.color = 0, 0, 0, 1
+
+            on_release:
+                self.background_color = 0, 0, 0, 0
+                self.color = 0.549, 0.941, 0.627, 1
+                root.on_back_button_clicked()
+                app.root.current = "modules_list"
+
+
+
+
+
+
+
+
+
+
+
+
+
+

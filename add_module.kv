@@ -1,0 +1,174 @@
+#:include modules_view.kv
+
+<AddModuleWindow@Screen>:
+    name:"add_module"
+
+    enter_name: text_input_a
+    enter_author: text_input_b
+    enter_description: text_input_c
+
+
+    canvas.before:
+
+        Rectangle:
+            id: rect_a
+            pos: self.pos
+            size: 1920, 1080
+            source: 'background.png'
+
+
+    BoxLayout:
+        size: root.width, root.height
+        orientation: "vertical"
+        padding: 10
+
+        canvas.before:
+            Color:
+                rgba: 0.549, 0.941, 0.627, 1
+            Line:
+                width: 1.1
+                rectangle: self.x + 10, self.y + 10, self.width - 20, self.height - 20
+
+
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_y: 0.65
+
+            Label:
+                text: "MODULE NAME:"
+                font_name: 'AverageMono.otf'
+                color: 0.549, 0.941, 0.627, 1
+                font_size: 28
+                halign: 'center'
+                text_size: self.size
+                size_hint_y: None
+                height: 40
+
+            TextInput:
+                id: text_input_a
+                font_name: 'AverageMono.otf'
+                foreground_color: 0.549, 0.941, 0.627, 1
+                background_color: 0, 0, 0, 0
+                font_size: 28
+                size_hint_y: None
+                height: 40
+                multiline: False
+
+                canvas.before:
+                    Color:
+                        rgba: 0.549, 0.941, 0.627, 1
+                    Line:
+                        width: 1.1
+                        rectangle: self.x + 4, self.y + 4, self.width - 8, self.height - 8
+
+            Label:
+                text: "AUTHOR:"
+                font_name: 'AverageMono.otf'
+                color: 0.549, 0.941, 0.627, 1
+                halign: 'center'
+                text_size: self.size
+                font_size: 28
+                size_hint_y: None
+                height: 40
+
+            TextInput:
+                id: text_input_b
+                font_name: 'AverageMono.otf'
+                foreground_color: 0.549, 0.941, 0.627, 1
+                background_color: 0, 0, 0, 0
+                font_size: 28
+                size_hint_y: None
+                height: 40
+                multiline: False
+
+                canvas.before:
+                    Color:
+                        rgba: 0.549, 0.941, 0.627, 1
+                    Line:
+                        width: 1.1
+                        rectangle: self.x + 4, self.y + 4, self.width - 8, self.height - 8
+
+            Label:
+                text: "DESCRIPTION:"
+                font_name: 'AverageMono.otf'
+                color: 0.549, 0.941, 0.627, 1
+                font_size: 28
+                halign: 'center'
+                text_size: self.size
+                size_hint_y: None
+                height: 40
+
+            TextInput:
+                id: text_input_c
+                font_name: 'AverageMono.otf'
+                font_size: 16
+                #size_hint_y: 0.1
+                background_color: 0, 0, 0, 0
+                foreground_color: 0.549, 0.941, 0.627, 1
+
+                canvas.before:
+                    Color:
+                        rgba: 0.549, 0.941, 0.627, 1
+                    Line:
+                        width: 1.1
+                        rectangle: self.x + 4, self.y + 4, self.width - 8, self.height - 8
+
+        Button:
+            text: "ADD MODULE"
+            font_name: 'AverageMono.otf'
+            color: 0.549, 0.941, 0.627, 1
+            font_size: 28
+            height: 50
+            size_hint: 1, None
+            background_down: ''
+            background_color: 0, 0, 0, 0
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1.5
+                    rectangle: self.x, self.y, self.width, self.height
+
+            on_press:
+                self.background_color = 0.549, 0.941, 0.627, 1
+                self.color = 0, 0, 0, 1
+
+            on_release:
+                self.background_color = 0, 0, 0, 0
+                self.color = 0.549, 0.941, 0.627, 1
+                root.on_add_module_clicked()
+                app.root.current = "modules_view"
+
+        Button:
+            text: "BACK"
+            font_name: 'AverageMono.otf'
+            color: 0.549, 0.941, 0.627, 1
+            font_size: 28
+            height: 50
+            size_hint: 1, None
+            background_down: ''
+            background_color: 0, 0, 0, 0
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1.5
+                    rectangle: self.x, self.y, self.width, self.height
+
+            on_press:
+                self.background_color = 0.549, 0.941, 0.627, 1
+                self.color = 0, 0, 0, 1
+
+            on_release:
+                self.background_color = 0, 0, 0, 0
+                self.color = 0.549, 0.941, 0.627, 1
+                app.root.current = "modules_view"
+
+
+
+
+
+
+

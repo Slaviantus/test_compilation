@@ -1,0 +1,83 @@
+
+
+<IncorrectAnswerWindow@Screen>:
+    name:"incorrect_answer"
+
+    BoxLayout:
+        orientation: "vertical"
+
+        BoxLayout:
+            orientation: "horizontal"
+
+            Label:
+                text: "100"
+                color: 0, 0, 0
+
+            Label:
+                text: "/"
+                color: 0, 0, 0
+
+            Label:
+                text: "100"
+                color: 0, 0, 0
+
+            Label:
+                text: "/"
+                color: 0, 0, 0
+
+            Label:
+                text: "100"
+                color: 0, 0, 0
+                height: 0.1 * root.height
+
+        Label:
+            text: "Translation"
+            color: 0, 0, 0
+            height: 0.1 * root.height
+
+        Label:
+            text: "Cyrilic"
+            color: 0, 0, 0
+            height: 0.1 * root.height
+
+        Label:
+            text: "Latin"
+            color: 0, 0, 0
+            height: 0.1 * root.height
+
+        TextInput:
+            font_size: 36
+            size_hint_y: 0.1
+            height: 0.1 * root.height
+
+        TextInput:
+            font_size: 36
+            size_hint_y: 0.1
+            height: 0.1 * root.height
+
+        Button:
+            text: "Next"
+            size_hint_y: 0.1
+            font_size: 36
+            color: 0, 1, 0, 1
+            background_color: 0, 0, 0, 1
+
+            on_press:
+                self.color = 0, 0, 0, 1
+
+            on_release:
+                self.color = 0, 1, 0, 1
+
+
+        Button:
+            text: "Back"
+            size_hint_y: 0.1
+            font_size: 36
+            color: 0, 1, 0, 1
+            background_color: 0, 0, 0, 1
+
+            on_press:
+                self.color = 0, 0, 0, 1
+
+            on_release:
+                self.color = 0, 1, 0, 1

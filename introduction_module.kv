@@ -1,0 +1,240 @@
+#:include modules_list.kv
+#:include typing_answer.kv
+#:include choose_word.kv
+
+<IntroductionModuleWindow@Screen>:
+
+    name:"introduction_module"
+
+    name_display: label_a
+    description_display: text_input_a
+    author_display: label_b
+    total_words: label_c
+    progress_label: label_d
+    alphabet_label: label_e
+    learn_button: button_a
+
+    on_enter: root.on_open_window()
+
+    canvas.before:
+
+        Rectangle:
+            id: rect_a
+            pos: self.pos
+            size: 1920, 1080
+            source: 'background.png'
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: 10
+
+        canvas.before:
+            Color:
+                rgba: 0.549, 0.941, 0.627, 1
+            Line:
+                width: 1.1
+                rectangle: self.x + 10, self.y + 10, self.width - 20, self.height - 20
+
+        Label:
+            id: label_a
+            text: ""
+            height: 40
+            size_hint: 1, None
+            background_color: 0, 0, 0, 0
+            font_name: 'AverageMono.otf'
+            color: 0.549, 0.941, 0.627, 1
+            halign: 'center'
+            valign: 'center'
+            text_size: self.size
+            font_size: 28
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1.1
+                    rectangle: self.x + 4, self.y + 4, self.width - 8, self.height - 8
+
+        Label:
+            id: label_b
+            height: 30
+            size_hint: 1, None
+            background_color: 0, 0, 0, 0
+            font_name: 'AverageMono.otf'
+            color: 0.549, 0.941, 0.627, 1
+            halign: 'center'
+            text_size: self.size
+            font_size: 20
+
+        TextInput:
+            id: text_input_a
+            height: 60
+            size_hint: 1, None
+            background_color: 0, 0, 0, 0
+            font_name: 'AverageMono.otf'
+            foreground_color: 0.549, 0.941, 0.627, 1
+            font_size: 20
+            readonly: True
+            multiline: True
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1
+                    rectangle: self.x + 4, self.y + 4, self.width - 8, self.height - 8
+
+        Label:
+            id: label_c
+            text: ""
+            color: 0.549, 0.941, 0.627, 1
+            font_name: 'AverageMono.otf'
+            halign: 'center'
+            valign: 'center'
+            text_size: self.size
+            font_size: 28
+            size_hint_y: 1, None
+            height: 40
+
+        Label:
+            id: label_d
+            text: ""
+            color: 0.549, 0.941, 0.627, 1
+            font_name: 'AverageMono.otf'
+            halign: 'center'
+            valign: 'center'
+            text_size: self.size
+            font_size: 28
+            size_hint_y: 1, None
+            height: 40
+
+
+        BoxLayout:
+            orientation: "vertical"
+            height: 136
+            size_hint: 1, None
+            padding: 4
+            spacing: 4
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1.1
+                    rectangle: self.x + 4, self.y + 4, self.width - 8, self.height - 8
+
+            Label:
+                text: "ALPHABET"
+                color: 0.549, 0.941, 0.627, 1
+                font_name: 'AverageMono.otf'
+                halign: 'center'
+                valign: 'center'
+                text_size: self.size
+                font_size: 20
+                size_hint_y: 1, None
+                height: 30
+
+            Label:
+                id: label_e
+                text: "ALPHABET"
+                color: 0.549, 0.941, 0.627, 1
+                font_name: 'AverageMono.otf'
+                halign: 'center'
+                valign: 'center'
+                text_size: self.size
+                font_size: 28
+                size_hint_y: 1, None
+                height: 40
+
+                canvas.before:
+                    Color:
+                        rgba: 0.549, 0.941, 0.627, 1
+                    Line:
+                        width: 1.1
+                        rectangle: self.x + 4, self.y + 4, self.width - 8, self.height - 8
+
+            Button:
+                text: "CHANGE"
+                font_name: 'AverageMono.otf'
+                color: 0.549, 0.941, 0.627, 1
+                font_size: 28
+                height: 50
+                size_hint: 1, None
+                background_down: ''
+                background_color: 0, 0, 0, 0
+
+                canvas.before:
+                    Color:
+                        rgba: 0.549, 0.941, 0.627, 1
+                    Line:
+                        width: 1.5
+                        rectangle: self.x, self.y, self.width, self.height
+
+                on_press:
+                    self.background_color = 0.549, 0.941, 0.627, 1
+                    self.color = 0, 0, 0, 1
+
+                on_release:
+                    self.background_color = 0, 0, 0, 0
+                    self.color = 0.549, 0.941, 0.627, 1
+                    root.on_changing_alphabet()
+
+        BoxLayout:
+            orientation: "vertical"
+            height: root.height - 466
+            size_hint: 1, None
+
+
+        Button:
+            id: button_a
+            text: "LEARN"
+            font_name: 'AverageMono.otf'
+            color: 0.549, 0.941, 0.627, 1
+            font_size: 28
+            height: 50
+            size_hint: 1, None
+            background_down: ''
+            background_color: 0, 0, 0, 0
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1.5
+                    rectangle: self.x, self.y, self.width, self.height
+
+            on_press:
+                self.background_color = 0.549, 0.941, 0.627, 1
+                self.color = 0, 0, 0, 1
+
+            on_release:
+                self.background_color = 0, 0, 0, 0
+                self.color = 0.549, 0.941, 0.627, 1
+                root.on_learn_button_clicked()
+
+
+        Button:
+            text: "BACK"
+            font_name: 'AverageMono.otf'
+            color: 0.549, 0.941, 0.627, 1
+            font_size: 28
+            height: 50
+            size_hint: 1, None
+            background_down: ''
+            background_color: 0, 0, 0, 0
+
+            canvas.before:
+                Color:
+                    rgba: 0.549, 0.941, 0.627, 1
+                Line:
+                    width: 1.5
+                    rectangle: self.x, self.y, self.width, self.height
+
+            on_press:
+                self.background_color = 0.549, 0.941, 0.627, 1
+                self.color = 0, 0, 0, 1
+
+            on_release:
+                self.background_color = 0, 0, 0, 0
+                self.color = 0.549, 0.941, 0.627, 1
+                app.root.current = "modules_list"
